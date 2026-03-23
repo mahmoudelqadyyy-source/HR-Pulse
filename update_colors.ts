@@ -1,0 +1,11 @@
+import fs from 'fs';
+let code = fs.readFileSync('src/App.tsx', 'utf8');
+code = code.replace(/slate-/g, 'gray-');
+code = code.replace(/indigo-/g, 'violet-');
+code = code.replace(/#020617/g, '#111827');
+code = code.replace(/#0F172A/g, '#1F2937');
+code = code.replace(/#4F46E5/g, '#6D28D9');
+code = code.replace(/primary: '#4F46E5', \/\/ Indigo 600/g, "primary: '#6D28D9', // Violet 700");
+code = code.replace(/slate: '#64748B',   \/\/ Slate 500/g, "gray: '#6B7280',   // Gray 500");
+code = code.replace(/COLORS\.slate/g, 'COLORS.gray');
+fs.writeFileSync('src/App.tsx', code);
